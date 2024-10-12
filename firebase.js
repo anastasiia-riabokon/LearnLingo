@@ -15,11 +15,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-export const getTeachers = (callback) => {
-  const teacherRef = ref(database, "teachers/");
+export const getTeachers = () => {
+  return new Promise((resolve, reject) => {
+    const teacherRef = ref(database, "teachers/");
 
-  onValue(teacherRef, (snapshot) => {
-    const data = snapshot.val();
-    callback(data);
+    onValue(
+      teacherRef,
+      (snapshot) => {
+        resolve(snapshot.val());
+      },
+      (error) => {
+        reject(error);
+      }
+    );
   });
 };
