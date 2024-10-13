@@ -1,26 +1,59 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getAllTeachers} from "./redux/teachers/operations";
-import * as selectorTeachers from "./redux/teachers/selectors";
+import {Route, Routes} from "react-router-dom";
+import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from "./routes/PrivateRoute";
+import Layout from "./components/Layout/Layout";
+import HomePage from "./pages/HomePage/HomePage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
+import TeacherPage from "./pages/TeacherPage/TeacherPage";
+import FavoritePage from "./pages/FavoritePage/FavoritePage";
 
 function App() {
-  const dispatch = useDispatch();
-  const teachers = useSelector(selectorTeachers.selectorTeacher);
-  const isLoading = useSelector(selectorTeachers.selectorIsLoading);
-  const msgError = useSelector(selectorTeachers.selectorErrorMS);
-
-  useEffect(() => {
-    dispatch(getAllTeachers());
-  }, [dispatch]);
-
   return (
-    <div>
-      {isLoading && (
-        <div>
-          <p>Loading...</p>
-        </div>
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route
+          index
+          element={
+            <PublicRoute>
+              <HomePage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/sign_up"
+          element={
+            <PublicRoute>
+              <SignUpPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/sign_in"
+          element={
+            <PublicRoute>
+              <SignInPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/teachers"
+          element={
+            <PublicRoute>
+              <TeacherPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/favorite"
+          element={
+            <PrivateRoute>
+              <FavoritePage />
+            </PrivateRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }
 
