@@ -1,5 +1,6 @@
 import {initializeApp} from "firebase/app";
 import {getDatabase, ref, onValue} from "firebase/database";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,6 +15,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const auth = getAuth(app);
 
 export const getTeachers = () => {
   return new Promise((resolve, reject) => {
@@ -29,4 +31,24 @@ export const getTeachers = () => {
       }
     );
   });
+};
+
+export const createdUser = async ({email, password}) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const loginUser = async ({email, password}) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    return user;
+  } catch (error) {
+    throw error;
+  }
 };
