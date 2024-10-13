@@ -20,6 +20,27 @@
   font-weight: 700;
 }
 
+:root {
+  --font-family: "Roboto", sans-serif;
+  --orange: #f4c550;
+  --light-orange: #fbe9ba;
+  --green: #9fbaae;
+  --light-green: #cbded3;
+  --blue: #9fb7ce;
+  --light-blue: #bfd6ea;
+  --pink: #e0a39a;
+  --light-pink: #f2c0bd;
+  --coral: #f0aa8d;
+  --light-coral: #f4c8ba;
+  --main: #121417;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family);
+  color: var(--main);
+}
+
+.orange-theme {
+  --color: var(--orange);
+  --hover-color: var(--light-orange);
 }

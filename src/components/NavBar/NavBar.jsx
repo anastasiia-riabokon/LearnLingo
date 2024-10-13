@@ -1,6 +1,7 @@
 import {useSelector} from "react-redux";
 import {Link, NavLink} from "react-router-dom";
 import {selectorIsLoading} from "../../redux/auth/selectors";
+import Icon from "../Icon/Icon";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoading);
@@ -13,14 +14,17 @@ const NavBar = () => {
       </li>
       <li>
         {isLoggedIn ? (
-          <span>
-            <Link to="/sign_in">Log out</Link>
-          </span>
+          <Link to="">
+            <Icon name={"log"} size={8} className=" stroke-[var(--color)]" fill={"none"} />
+            <p>Log out</p>
+          </Link>
         ) : (
           <>
-            <span>
-              <Link to="/sign_in">Log in</Link>
-            </span>
+            <Link to="/sign_in">
+              <Icon name={"log"} size={8} className=" stroke-[var(--color)]" fill={"none"} />
+              <p>Log in</p>
+            </Link>
+
             <Link to="/sign_up">Registration</Link>
           </>
         )}
