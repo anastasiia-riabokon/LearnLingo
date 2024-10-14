@@ -3,12 +3,13 @@ import {Link, NavLink} from "react-router-dom";
 import {selectorIsLoading} from "../../redux/auth/selectors";
 import Icon from "../Icon/Icon";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
+import Logo from "../Logo/Logo";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoading);
   return (
     <div>
-      <p>Logo</p>
+      <Logo />
       <SwitchTheme />
       <ul>
         <li>
