@@ -33,14 +33,41 @@
   --coral: #f0aa8d;
   --light-coral: #f4c8ba;
   --main: #121417;
+  --white: #f8f8f8;
 }
 
 body {
   font-family: var(--font-family);
   color: var(--main);
+  background-color: var(--white);
 }
 
 .orange-theme {
   --color: var(--orange);
   --hover-color: var(--light-orange);
+}
+
+.green-theme {
+  --color: var(--green);
+  --hover-color: var(--light-green);
+}
+
+.blue-theme {
+  --color: var(--blue);
+  --hover-color: var(--light-blue);
+}
+
+.pink-theme {
+  --color: var(--pink);
+  --hover-color: var(--light-pink);
+}
+
+.coral-theme {
+  --color: var(--coral);
+  --hover-color: var(--light-coral);
+}
+
+.dark-theme {
+  color: var(--white);
+  background-color: var(--main);
 }
