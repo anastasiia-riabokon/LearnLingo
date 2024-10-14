@@ -5,12 +5,14 @@ import Section from "./Section";
 
 const Layout = () => {
   return (
-    <Container>
+    <>
       <NavBar />
       <Section>
-        <Outlet />
+        <Container>
+          <Outlet />
+        </Container>
       </Section>
-    </Container>
+    </>
   );
 };
 export default Layout;

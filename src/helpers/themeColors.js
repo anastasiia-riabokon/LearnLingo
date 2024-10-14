@@ -1,9 +1,9 @@
 export const themeColors = [
-  {value: "orange", label: "Orange Theme", hex: "#f4c550"},
-  {value: "green", label: "Green Theme", hex: "#9fbaae"},
-  {value: "blue", label: "Blue Theme", hex: "#9fb7ce"},
-  {value: "pink", label: "Pink Theme", hex: "#e0a39a"},
-  {value: "coral", label: "Coral Theme", hex: "#f0aa8d"},
+  {value: "orange", label: "Orange", hex: "#f4c550"},
+  {value: "green", label: "Green", hex: "#9fbaae"},
+  {value: "blue", label: "Blue", hex: "#9fb7ce"},
+  {value: "pink", label: "Pink", hex: "#e0a39a"},
+  {value: "coral", label: "Coral", hex: "#f0aa8d"},
 ];
 
 export const dot = (color = "transparent") => ({
@@ -15,7 +15,7 @@ export const dot = (color = "transparent") => ({
     borderRadius: 10,
     content: '" "',
     display: "block",
-    marginRight: 8,
+    marginRight: 2,
     height: 10,
     width: 10,
   },

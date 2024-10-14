@@ -35,10 +35,7 @@ const SwitchTheme = () => {
   };
 
   return (
-    <div className="flex gap-4">
-      <button onClick={handleToggleDarkMode}>
-        {isDarkMode ? <BsSun color={"var(--color)"} /> : <BsMoonStarsFill color={"var(--color)"} />}
-      </button>
+    <div className="flex gap-2">
       <Select
         options={themeColors}
         onChange={handleChangeColorTheme}
@@ -77,6 +74,7 @@ const SwitchTheme = () => {
             fontFamily: "Roboto",
             border: theme === "dark" ? "1px solid var(--white)" : "none",
             cursor: "pointer",
+            fontSize: "12px",
             boxShadow: isFocused ? "none" : styles.boxShadow,
             padding: "2px 8px 2px 0px",
             "&:hover": {borderColor: "none"},
@@ -94,6 +92,9 @@ const SwitchTheme = () => {
           }),
         }}
       />
+      <button onClick={handleToggleDarkMode}>
+        {isDarkMode ? <BsSun color={"var(--color)"} /> : <BsMoonStarsFill color={"var(--color)"} />}
+      </button>
     </div>
   );
 };

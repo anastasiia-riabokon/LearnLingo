@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link to={"/"} className="flex gap-2 items-center">
       <Icon name="ukraine" size={28} />
-      <p className="font-medium text-[20px] leading-[1.2]">LearnLingo</p>
+      <p className="font-medium min-[768px]:text-[20px] leading-[1.2]">LearnLingo</p>
     </Link>
   );
 };
