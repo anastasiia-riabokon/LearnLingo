@@ -5,7 +5,8 @@ import {BsSun} from "react-icons/bs";
 import {BsMoonStarsFill} from "react-icons/bs";
 import {selectorColorTheme, selectorTheme} from "../../redux/theme/selectors";
 import {setColorTheme, setTheme} from "../../redux/theme/slice";
-import {themeColors} from "../../helpers/themeColors";
+import {themeColors, dot} from "../../helpers/themeColors";
+import Icon from "../Icon/Icon";
 
 const SwitchTheme = () => {
   const theme = useSelector(selectorTheme);
@@ -43,6 +44,17 @@ const SwitchTheme = () => {
         onChange={handleChangeColorTheme}
         value={themeColors.find((color) => color.value === colorTheme)}
         isSearchable={false}
+        components={{
+          IndicatorSeparator: () => null,
+          DropdownIndicator: () => (
+            <Icon
+              name={"arrow"}
+              fill={"none"}
+              stroke={theme === "dark" ? "var(--white)" : "var(--main)"}
+              size={10}
+            />
+          ),
+        }}
         styles={{
           option: (styles, {data, isFocused, isSelected}) => ({
             ...styles,
@@ -61,17 +73,24 @@ const SwitchTheme = () => {
           }),
           control: (styles, {isFocused}) => ({
             ...styles,
-            background: "var(--hover-color)",
+            background: "transparent",
             fontFamily: "Roboto",
-            border: "none",
+            border: theme === "dark" ? "1px solid var(--white)" : "none",
             cursor: "pointer",
             boxShadow: isFocused ? "none" : styles.boxShadow,
+            padding: "2px 8px 2px 0px",
             "&:hover": {borderColor: "none"},
           }),
           menu: (styles) => ({
             ...styles,
             backgroundColor: "none",
             backdropFilter: "blur(8px)",
+          }),
+          singleValue: (styles, {data}) => ({
+            ...styles,
+            ...dot(data.hex),
+            color: theme === "dark" ? "var(--white)" : "var(--main)",
+            margin: "0",
           }),
         }}
       />
