@@ -22,18 +22,30 @@
 
 :root {
   --font-family: "Roboto", sans-serif;
+
   --orange: #f4c550;
   --light-orange: #fbe9ba;
+  --apple-orange:#E7C885;
+
   --green: #9fbaae;
   --light-green: #cbded3;
+  --apple-green:#9EB9AD;
+
   --blue: #9fb7ce;
   --light-blue: #bfd6ea;
+  --apple-blue:#9FB6CD;
+
   --pink: #e0a39a;
   --light-pink: #f2c0bd;
+  --apple-pink:#DFA299;
+
   --coral: #f0aa8d;
   --light-coral: #f4c8ba;
+  --apple-coral:#EFA98C;
+
   --main: #121417;
   --white: #fff;
+  --black: #222224;
   --cold-white: #f8f8f8;
   --gray: #8a8a89;
   --light-gray: #12141733;
@@ -49,26 +61,36 @@ body {
 .orange-theme {
   --color: var(--orange);
   --hover-color: var(--light-orange);
+  --apple: var(--apple-orange);
+  --gradient: linear-gradient(180deg, #eeb055 0%, #d08f38 100%);
 }
 
 .green-theme {
   --color: var(--green);
   --hover-color: var(--light-green);
+  --apple: var(--apple-green);
+  --gradient: linear-gradient(180deg, #295761 0%, #183E49 100%);
 }
 
 .blue-theme {
   --color: var(--blue);
   --hover-color: var(--light-blue);
+  --apple: var(--apple-blue);
+  --gradient: linear-gradient(180deg, #314B6E 0%, #1F385A 100%);
 }
 
 .pink-theme {
   --color: var(--pink);
   --hover-color: var(--light-pink);
+  --apple: var(--apple-pink);
+  --gradient: linear-gradient(180deg, #b03f3e 0%, #982a27 100%);
 }
 
 .coral-theme {
   --color: var(--coral);
   --hover-color: var(--light-coral);
+  --apple: var(--apple-coral);
+  --gradient: fill: linear-gradient(180deg, #E17650 0%, #CA5B38 100%);
 }
 
 .dark-theme {
@@ -79,3 +101,13 @@ body {
 .ReactModal__Body--open {
   overflow: hidden;
 }
+
+a,
+button {
+  transition: all 350ms ease-in-out;
+}
+
+.liner_gradient {
+  background: var(--gradient);
+}
+
