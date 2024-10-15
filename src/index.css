@@ -75,3 +75,7 @@ body {
   color: var(--white);
   background-color: var(--main);
 }
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}

@@ -4,7 +4,7 @@ const CustomButton = ({to, width, properties, type, children}) => {
   return (
     <>
       {to ? (
-        <Link to={to} className={`w-[${width}px] ${properties} rounded-xl flex justify-center`}>
+        <Link to={to} className={`${properties} rounded-xl flex justify-center`}>
           {children}
         </Link>
       ) : (
