@@ -13,7 +13,7 @@ const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoading);
   const theme = useSelector(selectorTheme);
   return (
-    <header className="py-[10px] w-full flex justify-center items-center px-4">
+    <header className="pt-[30px] pb-[10px] w-full flex justify-center items-center px-4">
       <nav className="flex justify-between flex-row items-center flex-grow w-full max-w-[1184px] flex-wrap">
         <div className="flex gap-4 ">
           <Logo />
