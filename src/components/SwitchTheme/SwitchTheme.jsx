@@ -49,6 +49,7 @@ const SwitchTheme = () => {
               fill={"none"}
               stroke={theme === "dark" ? "var(--white)" : "var(--main)"}
               w={10}
+              h={5}
             />
           ),
         }}

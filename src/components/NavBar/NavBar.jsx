@@ -36,14 +36,20 @@ const NavBar = () => {
           </ul>
           {isLoggedIn ? (
             <button className="flex items-center gap-2 max-[767px]:hidden">
-              <Icon name={"log"} size={8} className="stroke-[var(--color)]" fill={"none"} />
+              <Icon name={"log"} w={20} h={20} className="stroke-[var(--color)]" fill={"none"} />
               <p className="leading-[1.25] font-bold">Log out</p>
             </button>
           ) : (
             <ul className="flex gap-4 items-center leading-[1.25] font-bold max-[767px]:hidden">
               <li>
                 <Link to="/sign_in" className="flex items-center gap-2">
-                  <Icon name={"log"} w={20} className=" stroke-[var(--color)]" fill={"none"} />
+                  <Icon
+                    name={"log"}
+                    w={20}
+                    h={20}
+                    className=" stroke-[var(--color)]"
+                    fill={"none"}
+                  />
                   <p>Log in</p>
                 </Link>
               </li>
@@ -62,7 +68,7 @@ const NavBar = () => {
             </ul>
           )}
           <button className="min-[768px]:hidden" onClick={() => setIsOpenMenu(true)}>
-            <IoMdMenu size={24} />
+            <IoMdMenu w={24} />
           </button>
         </nav>
       </header>
