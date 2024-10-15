@@ -1,11 +1,11 @@
 import sprite from "../../img/sprite.svg";
 
-const Icon = ({name, className = "", size, fill, stroke}) => {
+const Icon = ({name, className = "", w, h, fill, stroke}) => {
   return (
     <svg
       className={className !== "" ? className : null}
-      width={size}
-      height={size}
+      width={w}
+      height={h}
       fill={fill}
       stroke={stroke}
     >

@@ -43,7 +43,7 @@ const NavBar = () => {
             <ul className="flex gap-4 items-center leading-[1.25] font-bold max-[767px]:hidden">
               <li>
                 <Link to="/sign_in" className="flex items-center gap-2">
-                  <Icon name={"log"} size={20} className=" stroke-[var(--color)]" fill={"none"} />
+                  <Icon name={"log"} w={20} className=" stroke-[var(--color)]" fill={"none"} />
                   <p>Log in</p>
                 </Link>
               </li>
