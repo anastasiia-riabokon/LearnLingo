@@ -1,9 +1,9 @@
 import CustomButton from "../Custom/CustomButton";
 import FieldAuth from "./FieldAuth";
 
-const FormAuth = ({fields, title, btnText, textInfo}) => {
+const FormAuth = ({fields, title, btnText, textInfo, onSubmit}) => {
   return (
-    <>
+    <form onSubmit={onSubmit}>
       <h2>{title}</h2>
       <p>{textInfo}</p>
       <ul>
@@ -14,7 +14,7 @@ const FormAuth = ({fields, title, btnText, textInfo}) => {
         ))}
       </ul>
       <CustomButton>{btnText}</CustomButton>
-    </>
+    </form>
   );
 };
 export default FormAuth;

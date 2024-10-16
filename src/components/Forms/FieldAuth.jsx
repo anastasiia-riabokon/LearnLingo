@@ -2,7 +2,7 @@ const FieldAuth = ({type, label, register}) => {
   return (
     <label>
       <p>{label}</p>
-      <input type={type} register={register} />
+      <input type={type} {...register} />
     </label>
   );
 };
