@@ -25,8 +25,8 @@ const IMac = () => {
             y2="56.0534"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="var(--hover-color)" />
-            <stop offset="1" stop-color="var(--apple)" />
+            <stop stopColor="var(--hover-color)" />
+            <stop offset="1" stopColor="var(--apple)" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_11901_14"
@@ -36,8 +36,8 @@ const IMac = () => {
             y2="56.0534"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="var(--hover-color)" />
-            <stop offset="1" stop-color="var(--apple)" />
+            <stop stopColor="var(--hover-color)" />
+            <stop offset="1" stopColor="var(--apple)" />
           </linearGradient>
         </defs>
       </svg>
