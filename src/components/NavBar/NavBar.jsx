@@ -1,5 +1,5 @@
-import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {IoMdMenu} from "react-icons/io";
 
@@ -12,11 +12,20 @@ import Logo from "../Logo/Logo";
 import CustomButton from "../Custom/CustomButton";
 import CustomNavLink from "../Custom/CustomNavLink";
 import MenuModal from "../MenuModal/MenuModal";
+import {logoutUser} from "../../redux/auth/operations";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
   const theme = useSelector(selectorTheme);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate("/");
+    setIsOpenMenu(false);
+  };
 
   return (
     <>
@@ -40,7 +49,7 @@ const NavBar = () => {
             )}
           </ul>
           {isLoggedIn ? (
-            <button className="flex items-center gap-2 max-[767px]:hidden">
+            <button className="flex items-center gap-2 max-[767px]:hidden" onClick={handleLogout}>
               <Icon name={"log"} w={20} h={20} className="stroke-[var(--color)]" fill={"none"} />
               <p className="leading-[1.25] font-bold">Log out</p>
             </button>
@@ -78,7 +87,11 @@ const NavBar = () => {
         </nav>
       </header>
       <div className="min-[768px]:hidden">
-        <MenuModal isOpen={isOpenMenu} onClose={() => setIsOpenMenu(false)} />
+        <MenuModal
+          isOpen={isOpenMenu}
+          onClose={() => setIsOpenMenu(false)}
+          onClick={handleLogout}
+        />
       </div>
     </>
   );

@@ -27,3 +27,14 @@ export const currentUser = createAsyncThunk("user/current", async (_, thunkApi) 
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
+export const logoutUser = createAsyncThunk("user/logout", async (_, thunkApi) => {
+  try {
+    const {auth} = await thunkApi.getState();
+    if (!auth.token) {
+      return thunkApi.rejectWithValue("Not found token");
+    }
+  } catch (error) {
+    return thunkApi.rejectWithValue(error.message);
+  }
+});

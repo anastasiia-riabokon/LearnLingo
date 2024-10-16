@@ -10,7 +10,7 @@ import CustomNavLink from "../Custom/CustomNavLink";
 
 Modal.setAppElement("#root");
 
-const MenuModal = ({isOpen, onClose}) => {
+const MenuModal = ({isOpen, onClose, onClick}) => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
   const theme = useSelector(selectorTheme);
 
@@ -62,7 +62,7 @@ const MenuModal = ({isOpen, onClose}) => {
 
         <div className="w-full">
           {isLoggedIn ? (
-            <button className="flex items-center gap-2">
+            <button className="flex items-center gap-2" onClick={onClick}>
               <Icon name={"log"} w={20} h={20} className="stroke-[var(--color)]" fill={"none"} />
               <p className="leading-[1.25] font-bold">Log out</p>
             </button>

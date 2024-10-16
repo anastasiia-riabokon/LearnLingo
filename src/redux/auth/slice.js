@@ -1,5 +1,5 @@
 import {createSlice, isFulfilled, isPending, isRejected} from "@reduxjs/toolkit";
-import {currentUser, signInUser, signUpUser} from "./operations";
+import {currentUser, logoutUser, signInUser, signUpUser} from "./operations";
 
 const initialState = {
   user: null,
@@ -29,6 +29,9 @@ const sliceAuth = createSlice({
         state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+      })
+      .addCase(logoutUser.fulfilled, () => {
+        return initialState;
       })
       .addMatcher(isPending, (state) => {
         state.isLoading = true;
