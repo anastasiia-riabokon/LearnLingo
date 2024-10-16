@@ -12,14 +12,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <PublicRoute>
-              <HomePage />
-            </PublicRoute>
-          }
-        />
+        <Route index element={<HomePage />} />
         <Route
           path="/sign_up"
           element={
@@ -36,14 +29,7 @@ function App() {
             </PublicRoute>
           }
         />
-        <Route
-          path="/teachers"
-          element={
-            <PublicRoute>
-              <TeacherPage />
-            </PublicRoute>
-          }
-        />
+        <Route path="/teachers" element={<TeacherPage />} />
         <Route
           path="/favorite"
           element={
