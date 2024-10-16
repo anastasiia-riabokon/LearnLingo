@@ -6,7 +6,7 @@ const Sidebar = () => {
   const theme = useSelector(selectorTheme);
   return (
     <div
-      className={`max-w-[730px] px-[24px] min-[768px]:px-[64px] py-[64px] min-[768px]:py-[98px] ${
+      className={`min-[1440px]:max-w-[730px] px-[24px] min-[768px]:px-[64px] py-[64px] min-[768px]:py-[98px] ${
         theme === "dark" ? "bg-[var(--black)]" : "bg-[var(--cold-white)]"
       }  rounded-[30px]`}
     >
@@ -31,7 +31,7 @@ const Sidebar = () => {
 
       <CustomButton
         to={"/teachers"}
-        properties={`bg-[var(--color)] hover:bg-[var(--hover-color)] py-[14px] min-[768px]:py-4 max-w-[267px] font-bold ${
+        properties={`bg-[var(--color)] hover:bg-[var(--hover-color)] py-[14px] min-[768px]:py-4 max-w-[267px] font-bold min-[768px]:text-[18px] ${
           theme === "dark" && "text-[#121417]"
         }`}
       >
