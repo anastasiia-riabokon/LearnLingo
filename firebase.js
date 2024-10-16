@@ -1,6 +1,11 @@
 import {initializeApp} from "firebase/app";
 import {getDatabase, ref, onValue} from "firebase/database";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -59,4 +64,15 @@ export const loginUser = async ({email, password}) => {
   } catch (error) {
     throw error;
   }
+};
+
+export const authState = () => {
+  return new Promise((resolve) => {
+    return onAuthStateChanged(auth, (user) => {
+      resolve({
+        uid: user.uid,
+        email: user.email,
+      });
+    });
+  });
 };

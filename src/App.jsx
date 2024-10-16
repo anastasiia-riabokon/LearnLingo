@@ -1,4 +1,6 @@
 import {Route, Routes} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
 import PublicRoute from "./routes/PublicRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import Layout from "./components/Layout/Layout";
@@ -7,8 +9,17 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import TeacherPage from "./pages/TeacherPage/TeacherPage";
 import FavoritePage from "./pages/FavoritePage/FavoritePage";
+import {selectorIsCurrent} from "./redux/auth/selectors";
+import {currentUser} from "./redux/auth/operations";
 
 function App() {
+  const dispatch = useDispatch();
+  const isCurrent = useSelector(selectorIsCurrent);
+
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [isCurrent]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
