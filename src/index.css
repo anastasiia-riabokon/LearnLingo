@@ -25,23 +25,23 @@
 
   --orange: #f4c550;
   --light-orange: #fbe9ba;
-  --apple-orange:#E7C885;
+  --apple-orange: #e7c885;
 
   --green: #9fbaae;
   --light-green: #cbded3;
-  --apple-green:#9EB9AD;
+  --apple-green: #9eb9ad;
 
   --blue: #9fb7ce;
   --light-blue: #bfd6ea;
-  --apple-blue:#9FB6CD;
+  --apple-blue: #9fb6cd;
 
   --pink: #e0a39a;
   --light-pink: #f2c0bd;
-  --apple-pink:#DFA299;
+  --apple-pink: #dfa299;
 
   --coral: #f0aa8d;
   --light-coral: #f4c8ba;
-  --apple-coral:#EFA98C;
+  --apple-coral: #efa98c;
 
   --main: #121417;
   --white: #fff;
@@ -69,14 +69,14 @@ body {
   --color: var(--green);
   --hover-color: var(--light-green);
   --apple: var(--apple-green);
-  --gradient: linear-gradient(180deg, #295761 0%, #183E49 100%);
+  --gradient: linear-gradient(180deg, #295761 0%, #183e49 100%);
 }
 
 .blue-theme {
   --color: var(--blue);
   --hover-color: var(--light-blue);
   --apple: var(--apple-blue);
-  --gradient: linear-gradient(180deg, #314B6E 0%, #1F385A 100%);
+  --gradient: linear-gradient(180deg, #314b6e 0%, #1f385a 100%);
 }
 
 .pink-theme {
@@ -90,7 +90,7 @@ body {
   --color: var(--coral);
   --hover-color: var(--light-coral);
   --apple: var(--apple-coral);
-  --gradient: fill: linear-gradient(180deg, #E17650 0%, #CA5B38 100%);
+  --gradient: linear-gradient(180deg, #e17650 0%, #ca5b38 100%);
 }
 
 .dark-theme {
@@ -111,10 +111,14 @@ button {
   background: var(--gradient);
 }
 
-.centering-axisXY{
-  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+.centering-axisXY {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
-.centering-axisX{
-  @apply absolute left-1/2 -translate-x-1/2 
+.centering-axisX {
+  @apply absolute left-1/2 -translate-x-1/2;
+}
+
+.custom_dashed {
+  border: 1.5px dashed var(--color);
 }
