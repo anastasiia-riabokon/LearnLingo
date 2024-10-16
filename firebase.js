@@ -37,7 +37,11 @@ export const createdUser = async ({email, password}) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
-    return user;
+    return {
+      uid: user.uid,
+      email: user.email,
+      token: userCredential.user.stsTokenManager.accessToken,
+    };
   } catch (error) {
     throw error;
   }

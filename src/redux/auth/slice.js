@@ -15,12 +15,12 @@ const sliceAuth = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(signUpUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(signInUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
@@ -32,6 +32,7 @@ const sliceAuth = createSlice({
       })
       .addMatcher(isRejected, (state) => {
         state.isLoading = false;
+        state.isLoggedIn = false;
       });
   },
 });
