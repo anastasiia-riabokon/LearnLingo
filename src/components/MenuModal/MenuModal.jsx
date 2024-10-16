@@ -53,6 +53,11 @@ const MenuModal = ({isOpen, onClose}) => {
           <li onClick={onClose}>
             <CustomNavLink to="/teachers">Teachers</CustomNavLink>
           </li>
+          {isLoggedIn && (
+            <li>
+              <CustomNavLink to="/favorite">Favorite</CustomNavLink>
+            </li>
+          )}
         </ul>
 
         <div className="w-full">

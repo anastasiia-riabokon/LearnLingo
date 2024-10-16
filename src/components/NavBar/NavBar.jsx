@@ -33,6 +33,11 @@ const NavBar = () => {
             <li>
               <CustomNavLink to="/teachers">Teachers</CustomNavLink>
             </li>
+            {isLoggedIn && (
+              <li>
+                <CustomNavLink to="/favorite">Favorite</CustomNavLink>
+              </li>
+            )}
           </ul>
           {isLoggedIn ? (
             <button className="flex items-center gap-2 max-[767px]:hidden">
