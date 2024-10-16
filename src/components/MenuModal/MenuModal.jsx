@@ -1,7 +1,7 @@
 import {useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {IoMdClose} from "react-icons/io";
-import {selectorIsLoading} from "../../redux/auth/selectors";
+import {selectorIsLoggedIn} from "../../redux/auth/selectors";
 import {selectorTheme} from "../../redux/theme/selectors";
 import Icon from "../Icon/Icon";
 import CustomButton from "../Custom/CustomButton";
@@ -11,7 +11,7 @@ import CustomNavLink from "../Custom/CustomNavLink";
 Modal.setAppElement("#root");
 
 const MenuModal = ({isOpen, onClose}) => {
-  const isLoggedIn = useSelector(selectorIsLoading);
+  const isLoggedIn = useSelector(selectorIsLoggedIn);
   const theme = useSelector(selectorTheme);
 
   const customStyles = {
@@ -63,14 +63,20 @@ const MenuModal = ({isOpen, onClose}) => {
         <div className="w-full">
           {isLoggedIn ? (
             <button className="flex items-center gap-2">
-              <Icon name={"log"} size={8} className="stroke-[var(--color)]" fill={"none"} />
+              <Icon name={"log"} w={20} h={20} className="stroke-[var(--color)]" fill={"none"} />
               <p className="leading-[1.25] font-bold">Log out</p>
             </button>
           ) : (
             <ul className="leading-[1.25] font-bold flex flex-col gap-4">
               <li onClick={onClose}>
                 <Link to="/sign_in" className="flex items-center justify-center gap-2">
-                  <Icon name={"log"} size={20} className=" stroke-[var(--color)]" fill={"none"} />
+                  <Icon
+                    name={"log"}
+                    w={20}
+                    h={20}
+                    className=" stroke-[var(--color)]"
+                    fill={"none"}
+                  />
                   <p>Log in</p>
                 </Link>
               </li>

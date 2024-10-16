@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import {IoMdMenu} from "react-icons/io";
 
-import {selectorIsLoading} from "../../redux/auth/selectors";
+import {selectorIsLoggedIn} from "../../redux/auth/selectors";
 import {selectorTheme} from "../../redux/theme/selectors";
 
 import Icon from "../Icon/Icon";
@@ -14,7 +14,7 @@ import CustomNavLink from "../Custom/CustomNavLink";
 import MenuModal from "../MenuModal/MenuModal";
 
 const NavBar = () => {
-  const isLoggedIn = useSelector(selectorIsLoading);
+  const isLoggedIn = useSelector(selectorIsLoggedIn);
   const theme = useSelector(selectorTheme);
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
