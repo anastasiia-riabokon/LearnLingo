@@ -1,6 +1,4 @@
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
-import {IoMdClose} from "react-icons/io";
 import {selectorIsLoggedIn} from "../../redux/auth/selectors";
 import {selectorTheme} from "../../redux/theme/selectors";
 import Icon from "../Icon/Icon";
@@ -51,9 +49,9 @@ const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      <div className="relative text-center w-full px-4 py-8 h-full flex flex-col justify-between">
-        <button onClick={onClose} className="absolute top-2 left-2">
-          <IoMdClose size={22} />
+      <div className="relative text-center w-full px-[16px] pb-[32px] pt-[72px] h-full flex flex-col justify-between">
+        <button onClick={onClose} className="absolute top-[20px] left-[20px]">
+          <Icon name={"x"} w={32} h={32} stroke={"var(--main)"} />
         </button>
 
         <ul className="flex flex-col gap-[28px]">
@@ -64,7 +62,7 @@ const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
             <CustomNavLink to="/teachers">Teachers</CustomNavLink>
           </li>
           {isLoggedIn && (
-            <li>
+            <li onClick={onClose}>
               <CustomNavLink to="/favorite">Favorite</CustomNavLink>
             </li>
           )}
