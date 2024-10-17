@@ -14,6 +14,7 @@ import MenuModal from "../MenuModal/MenuModal";
 import {signOutUser} from "../../redux/auth/operations";
 import SignInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
+import LogoutModal from "../Modal/LogoutModal";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
@@ -22,6 +23,7 @@ const NavBar = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [isOpenSignOut, setIsOpenSignOut] = useState(false);
 
   const handleLogout = () => {
     dispatch(signOutUser());
@@ -34,6 +36,10 @@ const NavBar = () => {
   };
   const handleSignUp = () => {
     setIsOpenSignUp(true);
+  };
+
+  const handleSignOut = () => {
+    setIsOpenSignOut(true);
   };
 
   return (
@@ -58,7 +64,7 @@ const NavBar = () => {
             )}
           </ul>
           {isLoggedIn ? (
-            <button className="flex items-center gap-2 max-[767px]:hidden" onClick={handleLogout}>
+            <button className="flex items-center gap-2 max-[767px]:hidden" onClick={handleSignOut}>
               <Icon name={"log"} w={20} h={20} className="stroke-[var(--color)]" fill={"none"} />
               <p className="leading-[1.25] font-bold">Log out</p>
             </button>
@@ -79,7 +85,7 @@ const NavBar = () => {
               <li>
                 <CustomButton
                   onClick={handleSignUp}
-                  properties="py-[14px] bg-[var(--register-btn-bg)] text-[var(--register-btn-text)] py-[14px]  w-[166px]"
+                  properties="py-[14px] bg-[var(--register-btn-bg)] hover:bg-[var(--gray)] text-[var(--register-btn-text)] hover:text-[var(--register-btn-bg)] py-[14px] w-[166px]"
                 >
                   Registration
                 </CustomButton>
@@ -96,14 +102,19 @@ const NavBar = () => {
         <MenuModal
           isOpen={isOpenMenu}
           onClose={() => setIsOpenMenu(false)}
-          onClick={handleLogout}
           handleSignIn={handleSignIn}
           handleSignUp={handleSignUp}
+          onClick={handleSignOut}
         />
       </div>
 
       <SignInModal isOpen={isOpenSignIn} onClose={() => setIsOpenSignIn(false)} />
       <SignUpModal isOpen={isOpenSignUp} onClose={() => setIsOpenSignUp(false)} />
+      <LogoutModal
+        isOpen={isOpenSignOut}
+        onClose={() => setIsOpenSignOut(false)}
+        handleLogout={handleLogout}
+      />
     </>
   );
 };

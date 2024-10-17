@@ -7,7 +7,7 @@ import CustomNavLink from "../Custom/CustomNavLink";
 
 Modal.setAppElement("#root");
 
-const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
+const MenuModal = ({isOpen, onClose, handleSignIn, handleSignUp, onClick}) => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
 
   const onSignIn = () => {
