@@ -1,21 +1,13 @@
-import {useSelector} from "react-redux";
 import CustomButton from "../Custom/CustomButton";
-import {selectorTheme} from "../../redux/theme/selectors";
 
 const Sidebar = () => {
-  const theme = useSelector(selectorTheme);
   return (
-    <div
-      className={`min-[1440px]:max-w-[730px] px-[24px] min-[768px]:px-[64px] py-[64px] min-[768px]:py-[98px] ${
-        theme === "dark" ? "bg-[var(--black)]" : "bg-[var(--cold-white)]"
-      }  rounded-[30px]`}
-    >
+    <div className="min-[1440px]:max-w-[730px] px-[24px] min-[768px]:px-[64px] py-[64px] min-[768px]:py-[98px] bg-[var(--sidebar-bg)]">
       <h1 className="font-medium text-[32px] min-[768px]:text-[48px] leading-[1.17] mb-[32px]">
         Unlock your potential with the&nbsp;best{" "}
         <span
-          className={`bg-[var(--hover-color)] rounded-xl font-normal italic ${
-            theme === "dark" && "text-[#121417]"
-          }`}
+          className="bg-[var(--hover-color)] rounded-xl font-normal italic 
+            text-[var(--main)]"
         >
           &nbsp;language&nbsp;
         </span>{" "}
@@ -31,9 +23,7 @@ const Sidebar = () => {
 
       <CustomButton
         to={"/teachers"}
-        properties={`bg-[var(--color)] hover:bg-[var(--hover-color)] py-[14px] min-[768px]:py-4 max-w-[267px] font-bold min-[768px]:text-[18px] ${
-          theme === "dark" && "text-[#121417]"
-        }`}
+        properties="bg-[var(--color)] hover:bg-[var(--hover-color)] text-[var(--text-btn)] py-[14px] min-[768px]:py-4 max-w-[267px] font-bold min-[768px]:text-[18px] "
       >
         Get started
       </CustomButton>

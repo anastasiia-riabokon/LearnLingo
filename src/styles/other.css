@@ -1,0 +1,46 @@
+.liner_gradient {
+  background: var(--gradient);
+}
+
+.centering-axisXY {
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.centering-axisY {
+  @apply absolute top-1/2 -translate-y-1/2;
+}
+
+.centering-axisX {
+  @apply absolute left-1/2 -translate-x-1/2;
+}
+
+.custom_dashed {
+  border: 1.5px dashed var(--color);
+}
+
+.group_label {
+  @apply relative;
+}
+
+.label {
+  line-height: 1.375;
+  @apply absolute centering-axisY left-[18px] text-[14px];
+
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.field {
+  border: 1px solid var(--border);
+  @apply w-full rounded-[12px] py-[16px] text-[14px];
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--hover-border);
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}

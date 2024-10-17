@@ -1,10 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {IoMdMenu} from "react-icons/io";
 
 import {selectorIsLoggedIn} from "../../redux/auth/selectors";
-import {selectorTheme} from "../../redux/theme/selectors";
 
 import Icon from "../Icon/Icon";
 import SwitchTheme from "../SwitchTheme/SwitchTheme";
@@ -18,7 +17,6 @@ import SignUpModal from "../Modal/SignUpModal";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
-  const theme = useSelector(selectorTheme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -81,11 +79,7 @@ const NavBar = () => {
               <li>
                 <CustomButton
                   onClick={handleSignUp}
-                  properties={`py-[14px] bg-[var(--main)] w-[166px] ${
-                    theme === "dark"
-                      ? "bg-[var(--white)] text-[var(--main)]"
-                      : "bg-[var(--main)] text-[var(--white)]"
-                  }`}
+                  properties="py-[14px] bg-[var(--register-btn-bg)] text-[var(--register-btn-text)] py-[14px]  w-[166px]"
                 >
                   Registration
                 </CustomButton>

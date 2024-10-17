@@ -1,0 +1,34 @@
+.orange-theme {
+  --color: var(--orange);
+  --hover-color: var(--light-orange);
+  --apple: var(--apple-orange);
+  --gradient: linear-gradient(180deg, #eeb055 0%, #d08f38 100%);
+}
+
+.green-theme {
+  --color: var(--green);
+  --hover-color: var(--light-green);
+  --apple: var(--apple-green);
+  --gradient: linear-gradient(180deg, #295761 0%, #183e49 100%);
+}
+
+.blue-theme {
+  --color: var(--blue);
+  --hover-color: var(--light-blue);
+  --apple: var(--apple-blue);
+  --gradient: linear-gradient(180deg, #314b6e 0%, #1f385a 100%);
+}
+
+.pink-theme {
+  --color: var(--pink);
+  --hover-color: var(--light-pink);
+  --apple: var(--apple-pink);
+  --gradient: linear-gradient(180deg, #b03f3e 0%, #982a27 100%);
+}
+
+.coral-theme {
+  --color: var(--coral);
+  --hover-color: var(--light-coral);
+  --apple: var(--apple-coral);
+  --gradient: linear-gradient(180deg, #e17650 0%, #ca5b38 100%);
+}

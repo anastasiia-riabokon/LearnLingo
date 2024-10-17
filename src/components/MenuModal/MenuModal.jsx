@@ -1,6 +1,5 @@
 import {useSelector} from "react-redux";
 import {selectorIsLoggedIn} from "../../redux/auth/selectors";
-import {selectorTheme} from "../../redux/theme/selectors";
 import Icon from "../Icon/Icon";
 import CustomButton from "../Custom/CustomButton";
 import Modal from "react-modal";
@@ -10,7 +9,6 @@ Modal.setAppElement("#root");
 
 const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
-  const theme = useSelector(selectorTheme);
 
   const onSignIn = () => {
     onClose();
@@ -32,7 +30,7 @@ const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
       borderRadius: "none",
       border: "none",
       padding: "0",
-      backgroundColor: theme === "dark" ? "var(--main)" : "var(--cold-white)",
+      backgroundColor: "var(--modal-color)",
     },
     overlay: {
       backgroundColor: "rgba(47, 47, 47, 0.6)",
@@ -91,11 +89,7 @@ const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
               <li>
                 <CustomButton
                   onClick={onSignUp}
-                  properties={`py-[14px] bg-[var(--main)] w-full ${
-                    theme === "dark"
-                      ? "bg-[var(--white)] text-[var(--main)]"
-                      : "bg-[var(--main)] text-[var(--white)]"
-                  }`}
+                  properties="py-[14px] w-full bg-[var(--register-btn-bg)] text-[var(--register-btn-text)]"
                 >
                   Registration
                 </CustomButton>

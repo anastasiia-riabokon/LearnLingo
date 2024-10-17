@@ -1,0 +1,14 @@
+.dark-theme {
+  color: var(--white);
+  background-color: var(--main);
+  --border: rgba(221, 209, 199, 0.1);
+  --hover-border: var(--cold-white);
+  --text-form: var(--cold-white);
+  --text: var(--white);
+  --icon-color: var(--white);
+  --modal-color: var(--main);
+  --sidebar-bg: var(--black);
+  --text-info: var(--cold-white);
+  --register-btn-text: var(--main);
+  --register-btn-bg: var(--white);
+}

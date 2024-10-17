@@ -44,13 +44,7 @@ const SwitchTheme = () => {
         components={{
           IndicatorSeparator: () => null,
           DropdownIndicator: () => (
-            <Icon
-              name={"arrow"}
-              fill={"none"}
-              stroke={theme === "dark" ? "var(--white)" : "var(--main)"}
-              w={10}
-              h={5}
-            />
+            <Icon name={"arrow"} fill={"none"} stroke="var(--icon-color)" w={10} h={5} />
           ),
         }}
         styles={{
@@ -88,7 +82,7 @@ const SwitchTheme = () => {
           singleValue: (styles, {data}) => ({
             ...styles,
             ...dot(data.hex),
-            color: theme === "dark" ? "var(--white)" : "var(--main)",
+            color: "var(--text)",
             margin: "0",
           }),
         }}
