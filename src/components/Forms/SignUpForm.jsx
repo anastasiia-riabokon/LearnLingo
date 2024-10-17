@@ -1,10 +1,17 @@
 import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 import FormAuth from "./FormAuth";
 import {useDispatch} from "react-redux";
 import {signUpUser} from "../../redux/auth/operations";
+import {schemaRegister} from "../../helpers/validateSchema";
 
 const SignUpForm = ({onClose}) => {
-  const {reset, handleSubmit, register} = useForm();
+  const {
+    reset,
+    handleSubmit,
+    register,
+    formState: {errors},
+  } = useForm({resolver: yupResolver(schemaRegister)});
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
@@ -21,6 +28,7 @@ const SignUpForm = ({onClose}) => {
     <FormAuth
       onSubmit={handleSubmit(onSubmit)}
       title={"Registration"}
+      errors={errors}
       textInfo={
         "Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information"
       }

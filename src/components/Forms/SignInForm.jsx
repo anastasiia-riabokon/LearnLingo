@@ -1,11 +1,18 @@
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 import FormAuth from "./FormAuth";
 import {signInUser} from "../../redux/auth/operations";
+import {schemaLogin} from "../../helpers/validateSchema";
 
 const SignInForm = ({onClose}) => {
   const dispatch = useDispatch();
-  const {reset, handleSubmit, register} = useForm();
+  const {
+    reset,
+    handleSubmit,
+    register,
+    formState: {errors},
+  } = useForm({resolver: yupResolver(schemaLogin)});
 
   const onSubmit = (data) => {
     const user = {
@@ -23,6 +30,7 @@ const SignInForm = ({onClose}) => {
       <FormAuth
         onSubmit={handleSubmit(onSubmit)}
         title={"Log In"}
+        errors={errors}
         textInfo={
           "Welcome back! Please enter your credentials to access your account and continue your search for an teacher."
         }
