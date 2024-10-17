@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import FormAuth from "./FormAuth";
 import {signInUser} from "../../redux/auth/operations";
 
-const SignInForm = () => {
+const SignInForm = ({onClose}) => {
   const dispatch = useDispatch();
   const {reset, handleSubmit, register} = useForm();
 
@@ -16,6 +16,7 @@ const SignInForm = () => {
     dispatch(signInUser(user));
 
     reset();
+    onClose();
   };
   return (
     <div>

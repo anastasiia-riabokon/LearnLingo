@@ -13,6 +13,8 @@ import CustomButton from "../Custom/CustomButton";
 import CustomNavLink from "../Custom/CustomNavLink";
 import MenuModal from "../MenuModal/MenuModal";
 import {logoutUser} from "../../redux/auth/operations";
+import SignInModal from "../Modal/SignInModal";
+import SignUpModal from "../Modal/SignUpModal";
 
 const NavBar = () => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
@@ -20,11 +22,20 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const [isOpenSignIn, setIsOpenSignIn] = useState(false);
+  const [isOpenSignUp, setIsOpenSignUp] = useState(false);
 
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate("/");
     setIsOpenMenu(false);
+  };
+
+  const handleSignIn = () => {
+    setIsOpenSignIn(true);
+  };
+  const handleSignUp = () => {
+    setIsOpenSignUp(true);
   };
 
   return (
@@ -56,7 +67,7 @@ const NavBar = () => {
           ) : (
             <ul className="flex gap-4 items-center leading-[1.25] font-bold max-[767px]:hidden">
               <li>
-                <Link to="/sign_in" className="flex items-center gap-2">
+                <button onClick={handleSignIn} className="flex items-center gap-2">
                   <Icon
                     name={"log"}
                     w={20}
@@ -65,11 +76,11 @@ const NavBar = () => {
                     fill={"none"}
                   />
                   <p>Log in</p>
-                </Link>
+                </button>
               </li>
               <li>
                 <CustomButton
-                  to="/sign_up"
+                  onClick={handleSignUp}
                   properties={`py-[14px] bg-[var(--main)] w-[166px] ${
                     theme === "dark"
                       ? "bg-[var(--white)] text-[var(--main)]"
@@ -86,13 +97,19 @@ const NavBar = () => {
           </button>
         </nav>
       </header>
+
       <div className="min-[768px]:hidden">
         <MenuModal
           isOpen={isOpenMenu}
           onClose={() => setIsOpenMenu(false)}
           onClick={handleLogout}
+          handleSignIn={handleSignIn}
+          handleSignUp={handleSignUp}
         />
       </div>
+
+      <SignInModal isOpen={isOpenSignIn} onClose={() => setIsOpenSignIn(false)} />
+      <SignUpModal isOpen={isOpenSignUp} onClose={() => setIsOpenSignUp(false)} />
     </>
   );
 };

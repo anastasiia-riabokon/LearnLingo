@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const CustomButton = ({to, width, properties, type, children}) => {
+const CustomButton = ({to, properties, type, children, onClick}) => {
   return (
     <>
       {to ? (
@@ -9,8 +9,13 @@ const CustomButton = ({to, width, properties, type, children}) => {
         </Link>
       ) : (
         <button
+          onClick={onClick}
           type={type}
-          className={`w-[${width}] bg-[var(--color)] hover:bg-[var(--hover-color)] py-4 rounded-xl`}
+          className={
+            properties
+              ? `${properties} py-4 rounded-xl`
+              : `bg-[var(--color)] hover:bg-[var(--hover-color)] py-4 rounded-xl`
+          }
         >
           {children}
         </button>

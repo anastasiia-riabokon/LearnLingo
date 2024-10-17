@@ -10,9 +10,19 @@ import CustomNavLink from "../Custom/CustomNavLink";
 
 Modal.setAppElement("#root");
 
-const MenuModal = ({isOpen, onClose, onClick}) => {
+const MenuModal = ({isOpen, onClose, onClick, handleSignIn, handleSignUp}) => {
   const isLoggedIn = useSelector(selectorIsLoggedIn);
   const theme = useSelector(selectorTheme);
+
+  const onSignIn = () => {
+    onClose();
+    handleSignIn();
+  };
+
+  const onSignUp = () => {
+    onClose();
+    handleSignUp();
+  };
 
   const customStyles = {
     content: {
@@ -68,8 +78,8 @@ const MenuModal = ({isOpen, onClose, onClick}) => {
             </button>
           ) : (
             <ul className="leading-[1.25] font-bold flex flex-col gap-4">
-              <li onClick={onClose}>
-                <Link to="/sign_in" className="flex items-center justify-center gap-2">
+              <li>
+                <button onClick={onSignIn} className="flex items-center justify-center gap-2">
                   <Icon
                     name={"log"}
                     w={20}
@@ -78,12 +88,12 @@ const MenuModal = ({isOpen, onClose, onClick}) => {
                     fill={"none"}
                   />
                   <p>Log in</p>
-                </Link>
+                </button>
               </li>
-              <li onClick={onClose}>
+              <li>
                 <CustomButton
-                  to="/sign_up"
-                  properties={`py-[14px] bg-[var(--main)] ${
+                  onClick={onSignUp}
+                  properties={`py-[14px] bg-[var(--main)] w-full ${
                     theme === "dark"
                       ? "bg-[var(--white)] text-[var(--main)]"
                       : "bg-[var(--main)] text-[var(--white)]"
