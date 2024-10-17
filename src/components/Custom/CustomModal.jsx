@@ -1,18 +1,20 @@
 import Modal from "react-modal";
-import {useSelector} from "react-redux";
-import {selectorTheme} from "../../redux/theme/selectors";
+import Icon from "../Icon/Icon";
 
 Modal.setAppElement("#root");
 
 const CustomModal = ({children, isOpen, onClose}) => {
-  const theme = useSelector(selectorTheme);
   const customStyles = {
     content: {
       boxShadow: "0 4px 50px 0 rgba(0, 0, 0, 0.1)",
       borderRadius: "30px",
       border: "none",
       padding: "0",
-      backgroundColor: theme === "dark" ? "var(--main)" : "var(--cold-white)",
+      margin: "auto",
+      backgroundColor: "var(--modal-color)",
+      width: "fit-content",
+      height: "fit-content",
+      overflow: "auto",
     },
     overlay: {
       backgroundColor: "rgba(47, 47, 47, 0.6)",
@@ -28,7 +30,18 @@ const CustomModal = ({children, isOpen, onClose}) => {
       shouldCloseOnOverlayClick={true}
       shouldCloseOnEsc={true}
     >
-      {children}
+      <div className="p-[32px] min-[768px]:p-[64px]">
+        <button onClick={onClose}>
+          <Icon
+            name={"x"}
+            w={32}
+            h={32}
+            stroke={"var(--icon-color)"}
+            className="absolute top-[10px] right-[10px] min-[768px]:top-[20px] min-[768px]:right-[20px]"
+          />
+        </button>
+        <div>{children}</div>
+      </div>
     </Modal>
   );
 };

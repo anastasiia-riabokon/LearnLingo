@@ -36,8 +36,8 @@ const SignInForm = ({onClose}) => {
         }
         btnText={"Log In"}
         fields={[
-          {label: "email", type: "text", register: register("email")},
-          {label: "password", type: "password", register: register("password")},
+          {label: "Email", type: "text", register: register("email")},
+          {label: "Password", type: "password", register: register("password")},
         ]}
       />
     </div>

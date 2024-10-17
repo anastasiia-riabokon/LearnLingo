@@ -34,9 +34,9 @@ const SignUpForm = ({onClose}) => {
       }
       btnText={"Sign Up"}
       fields={[
-        {label: "name", type: "text", register: register("name")},
-        {label: "email", type: "text", register: register("email")},
-        {label: "password", type: "password", register: register("password")},
+        {label: "Name", type: "text", register: register("name")},
+        {label: "Email", type: "text", register: register("email")},
+        {label: "Password", type: "password", register: register("password")},
       ]}
     />
   );

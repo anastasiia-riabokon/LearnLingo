@@ -49,6 +49,14 @@
   --cold-white: #f8f8f8;
   --gray: #8a8a89;
   --light-gray: #12141733;
+
+  --border: rgba(18, 20, 23, 0.1);
+  --hover-border: #8a8a89;
+
+  --text-form: rgba(18, 20, 23, 0.8);
+  --text-btn: var(--main);
+  --icon-color: var(--main);
+  --modal-color: var(--white);
 }
 
 body {
@@ -96,14 +104,16 @@ body {
 .dark-theme {
   color: var(--white);
   background-color: var(--main);
-}
-
-.ReactModal__Body--open {
-  overflow: hidden;
+  --border: rgba(221, 209, 199, 0.1);
+  --hover-border: var(--cold-white);
+  --text-form: var(--cold-white);
+  --icon-color: var(--white);
+  --modal-color: var(--main);
 }
 
 a,
-button {
+button,
+input {
   transition: all 350ms ease-in-out;
 }
 
@@ -115,10 +125,57 @@ button {
   @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
+.centering-axisY {
+  @apply absolute top-1/2 -translate-y-1/2;
+}
+
 .centering-axisX {
   @apply absolute left-1/2 -translate-x-1/2;
 }
 
 .custom_dashed {
   border: 1.5px dashed var(--color);
+}
+
+.group_label {
+  @apply relative;
+}
+
+.label {
+  line-height: 1.375;
+  @apply absolute centering-axisY left-[18px] text-[14px];
+
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.field {
+  border: 1px solid var(--border);
+  @apply w-full rounded-[12px] py-[16px] text-[14px];
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--hover-border);
+  }
+
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+
+input {
+  outline: none;
+  background-color: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
 }
