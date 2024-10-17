@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -69,10 +70,20 @@ export const loginUser = async ({email, password}) => {
 export const authState = () => {
   return new Promise((resolve) => {
     return onAuthStateChanged(auth, (user) => {
-      resolve({
-        uid: user.uid,
-        email: user.email,
-      });
+      if (user) {
+        resolve({
+          uid: user.uid,
+          email: user.email,
+        });
+      }
     });
   });
+};
+
+export const logoutUser = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    throw error;
+  }
 };

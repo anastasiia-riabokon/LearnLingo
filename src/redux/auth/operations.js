@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {authState, createdUser, loginUser} from "../../../firebase";
+import {authState, createdUser, loginUser, logoutUser} from "../../../firebase";
 
 export const signUpUser = createAsyncThunk("newUser/signUp", async (credentials, thunkApi) => {
   try {
@@ -28,12 +28,9 @@ export const currentUser = createAsyncThunk("user/current", async (_, thunkApi) 
   }
 });
 
-export const logoutUser = createAsyncThunk("user/logout", async (_, thunkApi) => {
+export const signOutUser = createAsyncThunk("user/logout", async (_, thunkApi) => {
   try {
-    const {auth} = await thunkApi.getState();
-    if (!auth.token) {
-      return thunkApi.rejectWithValue("Not found token");
-    }
+    await logoutUser();
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }

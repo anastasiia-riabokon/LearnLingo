@@ -12,7 +12,7 @@ import Logo from "../Logo/Logo";
 import CustomButton from "../Custom/CustomButton";
 import CustomNavLink from "../Custom/CustomNavLink";
 import MenuModal from "../MenuModal/MenuModal";
-import {logoutUser} from "../../redux/auth/operations";
+import {signOutUser} from "../../redux/auth/operations";
 import SignInModal from "../Modal/SignInModal";
 import SignUpModal from "../Modal/SignUpModal";
 
@@ -26,7 +26,7 @@ const NavBar = () => {
   const [isOpenSignUp, setIsOpenSignUp] = useState(false);
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(signOutUser());
     navigate("/");
     setIsOpenMenu(false);
   };
