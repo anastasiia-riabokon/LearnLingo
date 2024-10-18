@@ -1,9 +1,11 @@
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
+import toast from "react-hot-toast";
 import FormAuth from "./FormAuth";
 import {signInUser} from "../../redux/auth/operations";
 import {schemaLogin} from "../../helpers/validateSchema";
+import {style} from "../../helpers/styleToast";
 
 const SignInForm = ({onClose}) => {
   const dispatch = useDispatch();
@@ -14,17 +16,30 @@ const SignInForm = ({onClose}) => {
     formState: {errors},
   } = useForm({resolver: yupResolver(schemaLogin)});
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const user = {
       email: data.email,
       password: data.password,
     };
 
-    dispatch(signInUser(user));
-
-    reset();
-    onClose();
+    try {
+      await dispatch(signInUser(user)).unwrap();
+      reset();
+      toast("Welcome back!", {
+        icon: "👏",
+        style: style,
+      });
+      onClose();
+    } catch (error) {
+      if (error === "Firebase: Error (auth/invalid-credential).") {
+        toast.error("Email or password wrong", {style: style});
+      } else {
+        const msg = error.replace(/^Firebase:\s*/, "").replace(/\s*\(.*?\)\.$/, "");
+        toast.error(msg, {style: style});
+      }
+    }
   };
+
   return (
     <div>
       <FormAuth

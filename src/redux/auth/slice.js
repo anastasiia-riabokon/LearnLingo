@@ -35,13 +35,16 @@ const sliceAuth = createSlice({
       })
       .addMatcher(isPending, (state) => {
         state.isLoading = true;
+        state.errorMS = null;
       })
       .addMatcher(isFulfilled, (state) => {
         state.isLoading = false;
+        state.errorMS = null;
       })
-      .addMatcher(isRejected, (state) => {
+      .addMatcher(isRejected, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = false;
+        state.errorMS = action.payload;
       });
   },
 });

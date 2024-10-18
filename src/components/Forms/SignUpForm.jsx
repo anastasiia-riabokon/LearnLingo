@@ -4,6 +4,8 @@ import FormAuth from "./FormAuth";
 import {useDispatch} from "react-redux";
 import {signUpUser} from "../../redux/auth/operations";
 import {schemaRegister} from "../../helpers/validateSchema";
+import toast from "react-hot-toast";
+import {style} from "../../helpers/styleToast";
 
 const SignUpForm = ({onClose}) => {
   const {
@@ -14,15 +16,29 @@ const SignUpForm = ({onClose}) => {
   } = useForm({resolver: yupResolver(schemaRegister)});
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const user = {
       email: data.email,
       password: data.password,
     };
 
-    dispatch(signUpUser(user));
-    reset();
-    onClose();
+    try {
+      await dispatch(signUpUser(user)).unwrap();
+
+      toast(`Welcome ${data.name}!`, {
+        icon: "👏",
+        style: style,
+      });
+      reset();
+      onClose();
+    } catch (error) {
+      if (error === "Firebase: Error (auth/email-already-in-use).") {
+        toast.error("Email already in use", {style: style});
+      } else {
+        const msg = error.replace(/^Firebase:\s*/, "").replace(/\s*\(.*?\)\.$/, "");
+        toast.error(msg, {style: style});
+      }
+    }
   };
   return (
     <FormAuth
