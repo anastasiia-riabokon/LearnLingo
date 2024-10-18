@@ -27,7 +27,8 @@ const FieldPassword = ({label, register}) => {
             name={isShowPassword ? "eye" : "eye-blocked"}
             w={20}
             h={20}
-            fill={"var(--icon-color)"}
+            stroke={"var(--icon-color)"}
+            fill={"none"}
           />
         </button>
       </span>
