@@ -11,4 +11,5 @@
   --text-info: var(--cold-white);
   --register-btn-text: var(--main);
   --register-btn-bg: var(--white);
+  --card-bg: var(--black);
 }

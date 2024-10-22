@@ -45,6 +45,10 @@
   }
 }
 
+.subtitle-card {
+  @apply font-bold leading-[1.5] text-[var(--gray)];
+}
+
 .item_header-card {
   position: relative;
 }
@@ -58,4 +62,17 @@
   background-color: rgba(18, 20, 23, 0.2);
   width: 2px;
   height: 16px;
+}
+
+.text-card {
+  @apply font-bold leading-[1.5];
+}
+
+.tag {
+  padding: 8px 12px;
+  @apply text-card rounded-[35px] border border-[var(--border)] bg-transparent;
+}
+
+.tag:first-child {
+  @apply bg-[var(--color)] border-[var(--color)] text-[var(--text-btn)];
 }

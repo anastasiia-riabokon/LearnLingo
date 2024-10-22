@@ -17,16 +17,16 @@ const TeachersCard = ({teacher}) => {
         </div>
       </div>
 
-      <div>
-        <div className="flex justify-between items-start">
+      <div className="max-w-[968px]">
+        <div className="flex justify-between items-start flex-wrap mb-[32px]">
           <div>
-            <p className="font-bold leading-[1.5] text-[var(--gray)]">Languages</p>
+            <p className="subtitle-card mb-[8px]">Languages</p>
             <h2 className="font-bold leading-[1] text-[24px]">
               {teacher.name}&nbsp;{teacher.surname}
             </h2>
           </div>
 
-          <ul className="flex flex-wrap gap-[32px] font-bold leading-[1.5] mr-[90px]">
+          <ul className="text-card flex flex-wrap gap-[32px] min-[1024px]:mr-[90px]">
             <li className="item_header-card flex gap-[8px] items-center">
               <Icon name={"book"} w={16} h={16} fill={"none"} stroke={"var(--icon-color)"} />
               <p>Lessons online</p>
@@ -41,32 +41,45 @@ const TeachersCard = ({teacher}) => {
             </li>
           </ul>
 
-          <div className="absolute top-[24px] right-[24px]">
+          <button className="absolute top-[24px] right-[24px]">
             <Icon name={"heart"} w={26} h={26} fill={"none"} stroke={"var(--icon-color)"} />
-          </div>
+          </button>
         </div>
 
-        <div>
-          <p>
-            Speaks:&nbsp;
-            {teacher.languages.length > 1 ? teacher.languages.join(", ") : teacher.languages}
-          </p>
+        <ul className="flex flex-col gap-[8px] mb-[32px]">
+          <li>
+            <span className="subtitle-card">Speaks:</span>&nbsp;
+            <span className="text-card">
+              {teacher.languages.length > 1 ? teacher.languages.join(", ") : teacher.languages}
+            </span>
+          </li>
 
-          <p>Lesson Info:&nbsp;{teacher.lesson_info}</p>
-          <p>Conditions:&nbsp;{teacher.conditions.join(" ")}</p>
-          <p>{teacher.experience}</p>
-        </div>
+          <li>
+            <span className="subtitle-card">Lesson Info:</span>&nbsp;
+            <span className="text-card">{teacher.lesson_info}</span>
+          </li>
+
+          <li>
+            <span className="subtitle-card">Conditions:</span>&nbsp;
+            <span className="text-card">{teacher.conditions.join(" ")}</span>
+          </li>
+        </ul>
 
         {isShow ? (
           <>
+            <p className="leading-[1.5] mb-[32px]">{teacher.experience}</p>
             <ReviewList reviews={teacher.reviews} />
+            <TagsList levels={teacher.levels} />
             <CustomButton>Book trial lesson</CustomButton>
           </>
         ) : (
-          <button onClick={() => setIsShow(true)}>Read more</button>
+          <>
+            <button onClick={() => setIsShow(true)} className="text-card underline mb-[32px]">
+              Read more
+            </button>
+            <TagsList levels={teacher.levels} />
+          </>
         )}
-
-        <TagsList levels={teacher.levels} />
       </div>
     </>
   );

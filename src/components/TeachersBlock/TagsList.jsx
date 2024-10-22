@@ -1,8 +1,10 @@
 const TagsList = ({levels}) => {
   return (
-    <ul>
+    <ul className="flex gap-[8px] flex-wrap mb-[32px]">
       {levels.map((level, i) => (
-        <li key={i}>#{level}</li>
+        <li key={i} className="tag">
+          #{level}
+        </li>
       ))}
     </ul>
   );

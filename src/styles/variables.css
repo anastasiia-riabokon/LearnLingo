@@ -26,7 +26,7 @@
   --black: #222224;
   --cold-white: #f8f8f8;
   --gray: #8a8a89;
-  --light-gray: #12141733;
+  --light-gray: rgba(18, 20, 23, 0.2);
 
   --border: rgba(18, 20, 23, 0.1);
   --hover-border: #8a8a89;
@@ -40,4 +40,5 @@
   --text-info: rgba(18, 20, 23, 0.7);
   --register-btn-text: var(--white);
   --register-btn-bg: var(--main);
+  --card-bg: var(--white);
 }

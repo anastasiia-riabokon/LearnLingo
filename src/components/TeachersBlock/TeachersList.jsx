@@ -6,7 +6,7 @@ const TeachersList = ({teachers}) => {
       {teachers.map((teacher, i) => (
         <li
           key={i + Math.random()}
-          className="flex gap-[48px] flex-grow p-[24px] max-w-[1184px] relative "
+          className="relative flex gap-[48px] flex-wrap p-[24px] w-full max-w-[1184px] rounded-[24px] bg-[var(--sidebar-bg)]"
         >
           <TeachersCard teacher={teacher} />
         </li>
