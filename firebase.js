@@ -1,5 +1,13 @@
 import {initializeApp} from "firebase/app";
-import {getDatabase, ref, onValue} from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  onValue,
+  query,
+  orderByKey,
+  limitToFirst,
+  startAt,
+} from "firebase/database";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -23,14 +31,30 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
-export const getTeachers = () => {
+export const getTeachers = (page = 1, limit = 3) => {
   return new Promise((resolve, reject) => {
     const teacherRef = ref(database, "teachers/");
+    const start = (page - 1) * limit;
+
+    const queryTeachers = query(
+      teacherRef,
+      orderByKey(),
+      startAt(start.toString()),
+      limitToFirst(limit)
+    );
+
+    const queryCount = query(teacherRef);
 
     onValue(
-      teacherRef,
+      queryTeachers,
       (snapshot) => {
-        resolve(snapshot.val());
+        const data = snapshot.val();
+        const teachersArray = data ? Object.values(data) : [];
+
+        onValue(queryCount, (countSnapshot) => {
+          const totalCount = countSnapshot.val() ? Object.keys(countSnapshot.val()).length : 0;
+          resolve({teachers: teachersArray, totalCount});
+        });
       },
       (error) => {
         reject(error);

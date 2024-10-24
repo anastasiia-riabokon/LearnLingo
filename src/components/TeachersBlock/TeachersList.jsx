@@ -2,7 +2,7 @@ import TeachersCard from "./TeachersCard";
 
 const TeachersList = ({teachers}) => {
   return (
-    <ul className="flex flex-col gap-[32px] items-center">
+    <ul className="flex flex-col gap-[32px] items-center mb-[64px]">
       {teachers.map((teacher, i) => (
         <li
           key={i + Math.random()}
