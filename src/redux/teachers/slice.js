@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {getAllTeachers} from "./operations";
+import {getFilterTeachers} from "./operations";
 
 const initialState = {
   items: [],
@@ -12,16 +12,16 @@ const sliceTeachers = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getAllTeachers.pending, (state) => {
+      .addCase(getFilterTeachers.pending, (state) => {
         state.isLoading = true;
         state.errorMS = null;
       })
-      .addCase(getAllTeachers.fulfilled, (state, action) => {
+      .addCase(getFilterTeachers.fulfilled, (state, action) => {
         state.items = action.payload;
         state.isLoading = false;
         state.errorMS = null;
       })
-      .addCase(getAllTeachers.rejected, (state, action) => {
+      .addCase(getFilterTeachers.rejected, (state, action) => {
         state.isLoading = false;
         state.errorMS = action.payload;
       });

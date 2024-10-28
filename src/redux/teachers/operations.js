@@ -1,12 +1,12 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {getTeachers} from "../../../firebase";
+import {filterTeachers} from "../../../firebase";
 
-export const getAllTeachers = createAsyncThunk(
-  "teachers/getAllTeachers",
+export const getFilterTeachers = createAsyncThunk(
+  "teachers/filter",
   async (credential, thunkApi) => {
-    const {page, limit} = credential;
+    const {page, limit, filter} = credential;
     try {
-      const data = await getTeachers(page, limit);
+      const data = await filterTeachers(page, limit, filter);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
